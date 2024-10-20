@@ -1,0 +1,80 @@
+﻿<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Webbu Kobo" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="jquery-3.7.1.min.js"></script>
+<title></title>
+</head>
+<body>
+<style>
+body{
+	text-align:center;
+}
+.lead{
+	margin-bottom:100vh;
+}
+.sample{
+	margin-bottom:30%;
+	opacity:0;
+	font-size:24px;
+	font-weight:bold;
+}
+.sample.animation{
+	animation:popup linear 0.4s forwards;
+}
+@keyframes popup {
+	0% {
+		sopacity:0;
+		transform:translateY(100px);
+	}
+	15% {
+		sopacity:0.5;
+		transform:translateY(80px);
+	}
+	30% {
+		sopacity:1;
+		transform:translateY(60px);
+	}
+	50% {
+		opacity:1;
+		transform:translateY(-40px);
+	}
+	70% {
+		opacity:1;
+		transform:translateY(40px);
+	}
+	90% {
+		opacity:1;
+		transform:translateY(-20px);
+	}
+	100% {
+		opacity:1;
+		transform:translateY(0px);
+	}
+}
+</style>
+<script>
+$(window).on('load scroll', function(){
+	$('.sample').each(function(){
+		var elemPos = $(this).offset().top;
+		var scroll = $(window).scrollTop();
+		var windowHeight = $(window).height();
+		var fadeHeight=$(window).height()/2;
+		if (scroll > elemPos - windowHeight + fadeHeight){
+			$(this).addClass('animation');
+		}
+	});
+});
+</script>
+<p class="lead">↓スクロール↓</p>
+<p class="sample">Sample</p>
+<p class="sample">Sample</p>
+
+
+
+
+</body>
+</html>
